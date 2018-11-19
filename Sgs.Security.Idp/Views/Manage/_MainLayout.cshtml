@@ -1,0 +1,35 @@
+﻿@{
+    Layout = "/Views/Shared/_MainLayout.cshtml";
+}
+
+
+<div class="clearfix">
+    <h4 class="float-left">Manage account</h4>
+    <h4 class="float-right">إدارة الحساب</h4>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-3">
+        <ul class="nav nav-pills flex-column nav-fill">
+            <li class="nav-item"><a class="nav-link" is-active-route asp-action="Index">Account Information</a></li>
+            <li class="nav-item"><a class="nav-link" is-active-route asp-action="ChangePassword">Change Password</a></li>
+        </ul>
+    </div>
+    <div class="col-md-6">
+        @RenderBody()
+    </div>
+    <div class="col-md-3">
+        <ul class="nav nav-pills flex-column nav-fill">
+            <li class="nav-item"><a class="nav-link " is-active-route asp-action="Index">معلومات الحساب</a></li>
+            <li class="nav-item"><a class="nav-link " is-active-route asp-action="ChangePassword">تغيير كلمة المرور</a></li>
+        </ul>
+    </div>
+</div>
+
+@section header {
+    @RenderSection("header", required: false)
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

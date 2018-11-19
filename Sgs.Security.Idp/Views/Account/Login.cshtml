@@ -1,0 +1,56 @@
+﻿@model AccountLoginViewModel
+
+@{
+    ViewData["Title"] = "Login - تسجيل الدخول";
+}
+
+<div class="account-contianer">
+    <form asp-route="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" data-submit-error="Invalid login - محاولة دخول خاطئة">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <label asp-for="UserName" class="float-right">اسم المستخدم</label>
+            <input asp-for="UserName" class="form-control form-control-lg text-center" aria-describedby="usernameHelp" placeholder="" autofocus>
+            <small id="usernameHelp" class="form-text text-muted">Enter your username.<span class="float-right">.أدخل اسم المستخدم الخاص بك</span></small>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <label asp-for="Password" class="float-right">كلمة المرور</label>
+            <input asp-for="Password" class="form-control form-control-lg text-center" aria-describedby="passwordHelp" placeholder="">
+            <small id="passwordHelp" class="form-text text-muted">Enter your password.<span class="float-right">.أدخل كلمة المرور الخاصة بك</span></small>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <hr />
+        <div class="form-check text-center" title="Remember me - تذكرني ">
+            <input asp-for="RememberMe" type="checkbox" class="form-check-input">
+            <label asp-for="RememberMe" class="form-check-label"></label>
+        </div>
+        <br />
+        <button name="button" value="login" class="btn btn-lg btn-block btn-info" title="Login - تسجيل الدخول">
+            <span class="float-left">Login</span>
+            <span class="float-right">دخول</span>
+        </button>
+        <br />
+        <button name="button" value="cancel" class="btn btn-lg btn-block btn-danger cancel" title="Cancel - إلغاء الأمر">
+            <span class="float-left">Cancel</span>
+            <span class="float-right">إلغاء</span>
+        </button>
+        <br />
+    </form>
+    <hr />
+
+    <a asp-action="Register"
+       asp-controller="Account"
+       asp-route-returnurl="@ViewData["ReturnUrl"]" class="btn btn-lg btn-link btn-block clearfix" title="Register new user - تسجيل مستخدم جديد">
+        <span class="float-left">Register</span>
+        <span class="float-right">تسجيل</span>
+    </a>
+</div>
+
+@section scripts{
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}

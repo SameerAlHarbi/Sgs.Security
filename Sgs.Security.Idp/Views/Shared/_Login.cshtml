@@ -1,0 +1,23 @@
+﻿@inject SignInManager<SgsUser> SignInManager
+@inject UserManager<SgsUser> UserManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li style="color:white;line-height:40px;margin-right:20px;">
+                <a asp-area="" asp-controller="Manage" asp-action="Index" class="nav-item" style="color:white" title="Manage">@UserManager.GetUserName(User)!</a>
+            </li>
+            <li>
+                <button type="submit" class="btn btn-light navbar-btn navbar-link">Log out</button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <div class="container-fluid">
+        <div class="float-right" style="color:white"><i class="fas fa-phone fa-fw fa-lg"></i> +966126195000 </div>
+    </div>
+
+}

@@ -1,0 +1,44 @@
+﻿html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    background-image: url('../Images/circles-light.png');
+    margin-bottom: 60px; /* Margin bottom by footer height */
+}
+
+.nav-theme {
+    background-color: #096363;
+    box-shadow: 0px 0px 20px #484545;
+    margin-bottom: 10px;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f0f0f0;
+    box-shadow: 0px 0px 10px #808080;
+}
+
+.im {
+    position: absolute;
+    bottom: 60px;
+    right: 0px;
+    height: 400px;
+    background-image: url('../Images/2030.png');
+    background-size: cover;
+    width: 400px;
+}
+
+.notices p {
+    line-height: 20px !important;
+}
+
+.account-contianer {
+    max-width: 450px;
+    margin: 20px auto;
+}

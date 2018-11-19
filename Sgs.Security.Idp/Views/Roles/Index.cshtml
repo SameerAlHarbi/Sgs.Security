@@ -1,0 +1,125 @@
+﻿@{
+    ViewData["Title"] = "Roles List";
+}
+
+<form id="newRoleForm" data-submit-error="Role name is invalid !!" novalidate>
+    <div class="form-group row" style="padding-right:0px">
+        <div class="col-sm-11">
+            <input type="text"
+                   name="roleName"
+                   id="roleName"
+                   class="form-control"
+                   placeholder="Role name" 
+                   data-val="true"
+                   data-val-required="Role name is required !!"
+                   data-val-remote="Role name is already exist !!"
+                   data-val-remote-additionalfields="*.ruleName"
+                   data-val-remote-url="@Url.Action("verifyRoleName","Roles")"
+                   required />
+            @*<div class="invalid-tooltip">
+                Please provide a valid role.
+            </div>*@
+            <span class="text-danger field-validation-valid" data-valmsg-for="roleName" data-valmsg-replace="true"></span>
+        </div>
+        <div class="col-sm-1" style="padding-left:0px"><button type="submit" class="btn btn-primary"><i class="fas fa-plus"></i> Add </button></div>
+    </div>
+</form>
+
+<hr />
+
+<div id="roles">
+
+</div>
+
+
+@Html.Partial("_confirmModal", "Role")
+
+@section scripts{
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script>
+        (function () {
+
+            function createRule(ruleName) {
+
+                if (!ruleName) return;
+
+                var options = {
+                url: "@Url.Action("Create", "Roles")",
+                type: "POST",
+                data: {
+                    roleName: ruleName
+                },
+                dataType: "json",
+                success: function (data) {
+                    if (data.result == true) {
+                        loadRoles();
+                        $('#roleName').val('');
+                        $('#roleName').focus();
+                        $('form').removeClass('was-validated');
+                        toastr.success("Rule Created Successfully");
+                    }
+                    else {
+
+                        toastr.error("Rule Create Error");
+
+                    }
+                },
+                error: function (e) {
+
+                    toastr.error("Rule Create exception");
+                }
+                };
+
+                $.ajax(options);
+
+            }
+
+            function loadRoles() {
+
+                var options = {
+                    url: "@Url.Action("RolesList", "Roles")",
+                    type: "GET",
+                    dataType: "html",
+                    success: function (data) {
+                        $("#roles").html(data);
+                        $("#roles").fadeIn();
+                    },
+                    error: function (error) {
+
+                        toastr.error("Rule Load Error");
+
+                    }
+                };
+
+                $.ajax(options);
+            }
+
+            $(function () {
+
+                loadRoles();
+
+                $('#newRoleForm').submit(function (e) {
+
+                    if ($(this).valid() &&  $('#roleName').val() && $('#roleName').val().trim() != '') {
+
+                        createRule($('#roleName').val());
+
+                    }
+
+                    if (this.checkValidity() === false) {
+
+                        $(this).classList.add('was-validated');
+
+                    }
+
+                    e.preventDefault();
+                    event.stopPropagation();
+                    return;
+                });
+
+            });
+        })();
+    </script>
+}
+

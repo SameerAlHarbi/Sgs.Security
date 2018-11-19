@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <!-- for FF, Chrome, Opera -->
+    <link rel="icon" type="image/png" href="~/Images/SGS-ICON.ico" sizes="16x16">
+    <link rel="icon" type="image/png" href="~/Images/SGS-ICON.ico" sizes="32x32">
+
+    <!-- CSS -->
+    <link href="~/node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/node_modules/@@fortawesome/fontawesome-free-webfonts/css/fontawesome.css" rel="stylesheet" />
+    <link href="~/node_modules/@@fortawesome/fontawesome-free-webfonts/css/fa-solid.css" rel="stylesheet" />
+    <link href="~/node_modules/@@fortawesome/fontawesome-free-webfonts/css/fa-regular.css" rel="stylesheet" />
+    <link href="~/node_modules/@@fortawesome/fontawesome-free-webfonts/css/fa-brands.css" rel="stylesheet" />
+    <link href="~/Style/MainStyle.css" rel="stylesheet" />
+    <link href="~/Style/toastr.css" rel="stylesheet" />
+
+    <title>@ViewBag.Title</title>
+    @RenderSection("header", required: false)
+
+</head>
+<body>
+    @Html.Partial("_Navbar")
+
+    <div class="container" style="margin-top:30px;">
+        @RenderBody()
+    </div>
+    <br />
+    @*<div class="im d-none d-md-block d-xl-none" style="height:200px;width:300px"></div>
+        <div class="im d-none d-xl-block" style="height:300px;width:350px"></div>*@
+
+    @Html.Partial("_Footer")
+
+    <!-- Script files -->
+    <script src="~/node_modules/jquery/dist/jquery.js"></script>
+    <script src="~/node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr-options.js"></script>
+    <script src="~/Scripts/app.js"></script>
+
+    @Html.Partial("_LayoutScript")
+
+    <!-- View specific scripts -->
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+

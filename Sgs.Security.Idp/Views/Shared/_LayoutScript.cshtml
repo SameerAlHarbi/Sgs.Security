@@ -1,0 +1,36 @@
+﻿<script>
+
+        (function () {
+
+            $(function () {
+
+                var statusMessage;
+
+                @if(!string.IsNullOrEmpty(@ViewData["StatusMessage"]?.ToString()))
+                {
+                    @:statusMessage = "@ViewData["StatusMessage"]";
+                }
+
+                if (statusMessage) {
+                    if (statusMessage.toUpperCase().includes("SUCC")) {
+                        toastr.success(statusMessage);
+                    }
+                    else if (statusMessage.toUpperCase().includes("ERROR")) {
+                        toastr.error(statusMessage);
+                    }
+                    else if (statusMessage.toUpperCase().includes("CANCEL")) {
+                        toastr.warning(statusMessage);
+                    }
+                    else {
+                        toastr.info(statusMessage);
+                    }
+                }
+                else {
+                    toastr.info("@ViewData["Title"]");
+                }
+
+            })
+
+        })();
+
+</script>

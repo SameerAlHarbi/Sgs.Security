@@ -1,0 +1,24 @@
+﻿@model UserViewModel
+
+
+@{
+    ViewData["Title"] = "Delete User";
+}
+
+<h4 class="text-danger">Are you sure you want to delete this user ?</h4>
+
+<hr />
+
+<dl>
+    <dt>@Html.DisplayNameFor(m => m.EmployeeId)</dt>
+    <dd>@Html.DisplayFor(m => m.EmployeeId)</dd>
+    <dt>@Html.DisplayNameFor(m => m.Name)</dt>
+    <dd>@Html.DisplayFor(m => m.Name)</dd>
+    <dt>@Html.DisplayNameFor(m => m.UserName)</dt>
+    <dd>@Html.DisplayFor(m => m.UserName)</dd>
+</dl>
+
+<form asp-action="Delete" asp-route-username="@Model.UserName" method="post">
+    <button type="submit" class="btn btn-danger"><i class="far fa-trash-alt"></i> Yes</button>
+    <a asp-action="index" class="btn btn-secondary" asp-route-statMsg="Cancel delete user">Cancel</a>
+</form>

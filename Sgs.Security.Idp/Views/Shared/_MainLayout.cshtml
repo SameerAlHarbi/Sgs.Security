@@ -1,0 +1,24 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="margin-left:15px">
+    @ViewData["Title"]
+</h2>
+
+<div style="margin-top:20px;
+    background-color:white;
+    box-shadow: 0px 0px 5px #484545;
+    border-radius: 5px;
+    padding:30px;
+    min-height:600px;">
+    @RenderBody()
+</div>
+
+@section header {
+    @RenderSection("header", required: false)
+}
+
+@section scripts {
+    @RenderSection("scripts", required: false)
+}

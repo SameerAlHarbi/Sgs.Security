@@ -1,0 +1,79 @@
+﻿@model UserRegisterViewModel
+
+
+@{
+    ViewData["Title"] = "Register user - تسجيل مستخدم";
+}
+
+<div class="account-contianer">
+
+    <div class="clearfix">
+        <h4 class="float-left">Register</h4>
+        <h4 class="float-right">تسجيل</h4>
+    </div>
+    <hr />
+    <form asp-route="Register" asp-route-returnurl="@ViewData["ReturnUrl"]" data-submit-error="Invalid Register - تسجيل خاطيء">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="Name"></label>
+            <label asp-for="Name" class="float-right">الاسم</label>
+            <input asp-for="Name" class="form-control form-control-lg text-center" aria-describedby="nameHelp" placeholder="" autofocus />
+            <small id="nameHelp" class="form-text text-muted">Full Name.<span class="float-right">.الاسم ثلاثي</span></small>
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="EmployeeId"></label>
+            <label asp-for="EmployeeId" class="float-right">الرقم الوظيفي</label>
+            <input asp-for="EmployeeId" class="form-control form-control-lg text-center" aria-describedby="employeeIdHelp" placeholder="" />
+            <small id="employeeIdHelp" class="form-text text-muted">Your employee id.<span class="float-right">.الرقم الوظيفي الخاص بك</span></small>
+            <span asp-validation-for="EmployeeId" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UserName"></label>
+            <label asp-for="UserName" class="float-right">اسم المستخدم</label>
+            <input asp-for="UserName" class="form-control form-control-lg text-center" aria-describedby="usernameHelp" placeholder="" autofocus />
+            <small id="usernameHelp" class="form-text text-muted">Your user name.<span class="float-right">.اسم المستخدم الخاص بك</span></small>
+            <span asp-validation-for="UserName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <label asp-for="Email" class="float-right">البريد الالكتروني</label>
+            <input asp-for="Email" class="form-control form-control-lg text-center" aria-describedby="emailHelp" placeholder="" autofocus />
+            <small id="emailHelp" class="form-text text-muted">Your email.<span class="float-right">.البريد الالكتروني الخاص بك</span></small>
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Password"></label>
+            <label asp-for="Password" class="float-right">كلمة المرور</label>
+            <input asp-for="Password" class="form-control form-control-lg text-center" aria-describedby="passwordHelp" placeholder="" autofocus />
+            <small id="passwordHelp" class="form-text text-muted">Your password.<span class="float-right">.كلمة المرور الخاصة</span></small>
+            <span asp-validation-for="Password" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ConfirmPassword"></label>
+            <label asp-for="ConfirmPassword" class="float-right">تأكيد كلمة المرور</label>
+            <input asp-for="ConfirmPassword" class="form-control form-control-lg text-center" aria-describedby="confirmpasswordHelp" placeholder="" autofocus />
+            <small id="confirmpasswordHelp" class="form-text text-muted">Match password.<span class="float-right">.مطابقة كلمة المرور</span></small>
+            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+        </div>
+        <br />
+        <button class="btn btn-lg btn-block btn-info" title="Save - حفظ">
+            <span class="float-left">Save</span>
+            <span class="float-right">حفظ</span>
+        </button>
+        <br />
+        <a asp-action="Login"
+           asp-controller="Account"
+           asp-route-returnurl="@ViewData["ReturnUrl"]" class="btn btn-lg btn-danger btn-block clearfix" title="Cancel and return to login screen - إلغاء الأمر و العودة لشاشة تسجيل الدخول">
+            <span class="float-left">Cancel</span>
+            <span class="float-right">إلغاء</span>
+        </a>
+    </form>
+
+</div>
+
+@section scripts{
+
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+}
